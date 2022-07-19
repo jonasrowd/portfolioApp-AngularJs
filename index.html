@@ -1,0 +1,56 @@
+<!doctype html>
+
+<html lang="en">
+
+<header>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js"></script>
+  <!-- change the name! -->
+  <title>{{ fullName}}'s Portfolio</title>
+  <!-- link to the master cascading stylesheet -->
+  <link rel="stylesheet" href="css/master.css">
+  <link rel="FaviconIcon" href="favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="name" content="{{ fullName}}'s Portfolio">
+  <!-- remove the following line after you are happy with your Website
+       so that search engines will index it! -->
+  <meta name="robots" content="noindex, nofollow">
+</header>
+
+<body ng-app="portfolioApp" ng-controller="appController">
+  <img class="hero" src="images/banner.jpg" width="100%" alt="banner">
+
+  <h1 ng-bind="fullName"></h1>
+
+  <h2>About Me</h2>
+
+  <div ng-repeat="item in aboutMe">
+    <p>{{ item }}</p>
+  </div>
+
+  <h2>Work Samples</h2>
+
+  <div ng-repeat="thumbnail in thumbnails">
+    <a href="images/{{ thumbnail }}"><img src="images/{{ thumbnail }}" alt="{{ thumbnail }}"/></a>
+  </div>
+
+  <h2>Contact</h2>
+
+  <p>Email: <a href="mailto:{{ email }}" target="_blank">{{ email }}</a></p>
+
+  <form name="helloForm">
+    What is your name? <input type="text" name="visitorName" ng-model="visitorName" required>
+  </form>
+
+  <h2 ng-show="visitorName.length > 1">Thank you for visiting, {{visitorName}}!</h2>
+
+  <script src="angular/app.js"></script>
+</body>
+
+<footer>
+  <hr>
+  <p> Powered by <a href="https://angularjs.org" target="_blank"><img src="images/angularjs.png" alt="A"/> AngularJs</a></p>
+  <code>Copyright (C) 2022 {{ fullName}}</code>
+</footer>
+
+</html>
